@@ -50,12 +50,27 @@ router.post('/', (req, res) => {
   }
 });
 
-router.put('/:id', (req, res) => {
-  // update a tag's name by its `id` value
+//* update a tag's name by its `id` value
+router.put('/:id', async (req, res) => {
+  const tagData = Tag.update(req.body, {
+    where: {
+      id: req.params.id
+    },
+  });
+  if (!tagData) {
+    res. status(404).json(
+      { 
+        message: 'No tag found.'
+      });
+      res.status(404).json({
+        m
+      })
+  }
 });
 
-router.delete('/:id', (req, res) => {
-  // delete on tag by its `id` value
+//* delete on tag by its `id` value
+router.delete('/:id', async (req, res) => {
+
 });
 
 module.exports = router;
